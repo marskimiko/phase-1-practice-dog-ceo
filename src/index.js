@@ -27,23 +27,22 @@ function getDogBreed() {
   const dogBreeds = document.getElementById('dog-breeds');
   fetch(breedUrl)
     .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error(response.statusText);
-      }
+      return response.json()
     })
+      
     .then(data => {
       dog_list = data.message;
       for (dog in dog_list) {
         let li = document.createElement('li');
         let node = document.createTextNode(dog);
         li.appendChild(node);
-        container.appendChild(li);
+        dogBreeds.appendChild(li);
       }
     });
+  dogBreeds.addEventListener('click')
 }
 getDogBreed();
+
 
 
 // ## Challenge 3
